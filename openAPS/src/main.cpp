@@ -15,7 +15,8 @@ WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient); 
 
 // broker, port
-const char* broker = "tcp://mqtt-dev.precise.seas.upenn.edu";
+// const char* broker = "tcp://mqtt-dev.precise.seas.upenn.edu";
+const char* broker = "172.20.2.117";
 const int port = 1883;
 
 // Task initialization
@@ -324,6 +325,7 @@ void setup() {
     // Initialize MQTT client and connect to the broker
     Serial.print("Connecting to MQTT broker: ");
     Serial.println(broker);
+    mqttClient.setUsernamePassword("cis541-2024", "cukwy2-geNwit-puqced");
 
     while (!mqttClient.connect(broker, port)) {
         Serial.println("Connecting to MQTT...");
